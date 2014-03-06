@@ -51,7 +51,8 @@ public class PlayerTurn
 		return players[currentPlayer].getPlayer();
 	}
 
-	public boolean checkActionToken()
+	//checks, placements, and returns
+	public boolean actionTokenUsable()
 	{
 		if(players[currentPlayer].getActionTokens() > 0 && !tokenUsed)
 		{
@@ -87,6 +88,11 @@ public class PlayerTurn
 		players[currentPlayer].placeTwoBlock();
 		actionPoints--;
 	}
+
+	public void returnTwoBlock()
+	{
+		players[currentPlayer].returnTwoBlock();
+	}
 	
 	public boolean checkVillage()
 	{
@@ -106,6 +112,11 @@ public class PlayerTurn
 		actionPoints--;
 	}
 
+	public void returnVillageBlock()
+	{
+		players[currentPlayer].returnVillageBlock();
+	}
+
 	public boolean checkRice()
 	{
 		if(players[currentPlayer].riceBlocksLeft() > 0 && actionPoints > 0)
@@ -118,9 +129,37 @@ public class PlayerTurn
 		}
 	}
 
-	public void placeVillage()
+	public void placeRice()
 	{
 		players[currentPlayer].placeRiceBlock();
 		actionPoints--;
+	}
+
+	public void returnRiceBlock()
+	{
+		players[currentPlayer].returnRiceBlock();
+	}
+
+	//changing score
+	public void addScore(int s)
+	{
+		players[currentPlayer].addScore(s);
+	}
+
+	public void decrementScore(int s)
+	{
+		players[currentPlayer].decrementScore(s);
+	}
+
+	//changing colors
+	public void currentPlayerColor(String c)
+	{
+		players[currentPlayer].setColor(c);
+	}
+
+	//assumes it will always receive a valid input
+	public void setPlayerColor(String s, int p)
+	{
+		players[p].setColor(c);
 	}
 }
